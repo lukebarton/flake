@@ -1,0 +1,22 @@
+# This is the 1Password SSH agent config file, which allows you to customize the
+# behavior of the SSH agent running on this machine.
+#
+# You can use it to:
+# * Enable keys from other vaults than the Private vault
+# * Control the order in which keys are offered to SSH servers
+#
+# You can test the result by running:
+#
+#  SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ssh-add -l
+#
+# More examples can be found here:
+#  https://developer.1password.com/docs/ssh/agent/config
+
+# Personal GitHub key - only for github.com
+[[ssh-keys]]
+item = "github_auth_20260211181901"
+vault = "Private"
+
+# Load all other keys from Private vault
+[[ssh-keys]]
+vault = "Private"

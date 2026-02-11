@@ -1,0 +1,20 @@
+font-family = "BlexMono Nerd Font"
+font-size = 14
+
+theme = Monokai Pro
+# custom-shader = ./shaders/bloom.glsl
+custom-shader = ./shaders/cursor_blaze.glsl
+custom-shader = ./shaders/cursor_smear.glsl
+
+
+background-opacity = 0.90
+background-blur-radius = 20
+selection-invert-fg-bg = true
+bold-is-bright = true
+# minimum-contrast = 2
+cursor-style = block
+cursor-style-blink = true
+cursor-invert-fg-bg = true
+cursor-opacity = .8
+
+keybind = cmd+k=text:\x01K
