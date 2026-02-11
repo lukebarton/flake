@@ -7,6 +7,8 @@
     ];
   };
 
+  home.file.".gitignore".source = ../files/git/.gitignore;
+
   programs.git = {
     enable = true;
 
