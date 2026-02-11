@@ -2,9 +2,9 @@
   imports = [
     ../configs/git.nix
     ../configs/ghostty.nix
-#    ../configs/zed.nix
-#    ../configs/aerospace.nix
-#    ../configs/nvim.nix
+    #    ../configs/zed.nix
+    #    ../configs/aerospace.nix
+    #    ../configs/nvim.nix
     ../configs/starship.nix
   ];
 

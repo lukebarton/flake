@@ -1,5 +1,5 @@
 { ... }: {
   networking.hostName = "mobius";
 
-  homebrew.casks = [];
+  homebrew.casks = [ ];
 }

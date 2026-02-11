@@ -13,7 +13,7 @@
     let
       darwinSystem = "aarch64-darwin";
 
-      mkDarwinSystem = { hostname, extraHomeModules ? [] }:
+      mkDarwinSystem = { hostname, extraHomeModules ? [ ] }:
         nix-darwin.lib.darwinSystem {
           system = darwinSystem;
           specialArgs = { inherit inputs; };
