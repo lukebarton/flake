@@ -112,7 +112,7 @@
 
     casks = [
       "1password"
-      "aerospace"
+      "nikitabobko/tap/aerospace"
       "alcove"
       "betterdisplay"
       "claude-code"
