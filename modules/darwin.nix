@@ -117,6 +117,7 @@
       "betterdisplay"
       "claude-code"
       "ghostty"
+      "jetbrains-toolbox"
       "shottr"
       "zed"
       "zen"
