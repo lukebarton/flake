@@ -16,6 +16,12 @@
   # Primary user for system preferences
   system.primaryUser = "luke";
 
+  # Enable fingerprint sudo
+  security.pam.services.sudo_local = {
+    enable = true;
+    touchIdAuth = true;
+  };
+
   # System preferences
   system.defaults = {
     # Dock settings

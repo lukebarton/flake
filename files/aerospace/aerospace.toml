@@ -143,6 +143,10 @@ run = 'layout floating'
 if.app-id = 'com.chabomakers.Antinote' # TODO: Antinote makes me cry, because it switches to the original workspace each time I focus the window
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-id = 'com.apple.SecurityAgent'
+run = 'layout floating'
+
 # Fallback
 [[on-window-detected]]
 # run = ['move-node-to-monitor ^Built-in --focus-follows-window', 'layout tiling'] # this is more annoying than useful, as it turns out
