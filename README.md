@@ -2,43 +2,26 @@
 
 Declarative macOS configuration using nix-darwin, home-manager, and flakes.
 
-## Prerequisites
+## Bootstrap
 
-1. Install Nix:
-   ```bash
-   curl -fsSL https://install.determinate.systems/nix | sh -s -- install
-   ```
-2. Install Homebrew (for GUI applications):
-   ```bash
-   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-   ```
-
-## Setup
-
-**First time on a new machine:**
+On a fresh Mac, run:
 
 ```bash
-# 1. Test the build first
-nix run nix-darwin -- build --flake .#$(hostname | cut -d. -f1)
-
-# 2. If build succeeds, apply the configuration
-sudo nix run nix-darwin -- switch --flake .#$(hostname | cut -d. -f1)
-
-# 3. Set up git hooks
-make init
-
-# 4. Restart shell
-exec zsh
+curl -fsSL https://raw.githubusercontent.com/lukebarton/flake/main/bootstrap.sh | bash
 ```
 
-**After initial setup (regular usage):**
+This will install Xcode CLT, clone the repo to `~/src/github.com/lukebarton/flake`, and run `make bootstrap` which handles Nix, Homebrew, hostname selection, building, and activation.
+
+## Usage
 
 ```bash
-sudo make switch   # Apply configuration changes
-make build         # Test without applying
-make update        # Update flake inputs
-make check         # Validate flake
-make fmt           # Format nix files
+make switch    # Build and activate the configuration
+make build     # Test without applying
+make update    # Update flake inputs
+make check     # Validate flake
+make fmt       # Format nix files
+make hostname  # Set machine hostname to a supported configuration
+make init      # Set up git hooks
 ```
 
 ## Adding Packages
