@@ -20,18 +20,34 @@ help:
 bootstrap: nix homebrew hostname switch init
 	@printf '\033[1;34m==> Done! Restart your shell: exec zsh\033[0m\n'
 
-# Ensure hostname matches a supported configuration
+# Ensure hostname has a matching configuration
 hostname:
 	@current=$$(hostname | cut -d. -f1); \
-	valid=false; \
-	for h in $(HOSTS); do \
-		[ "$$h" = "$$current" ] && valid=true; \
+	if [ -d "hosts/$$current" ]; then \
+		printf '\033[1;34m==> Hostname "%s" has a configuration\033[0m\n' "$$current"; \
+		exit 0; \
+	fi; \
+	printf '\033[1;33m==> No configuration found for hostname "%s"\033[0m\n' "$$current"; \
+	printf '\n'; \
+	printf '  1) Keep current hostname (%s)\n' "$$current"; \
+	printf '  2) Set a new hostname\n'; \
+	printf '\n'; \
+	while true; do \
+		printf 'Choice [1-2]: '; \
+		read choice; \
+		case "$$choice" in \
+			1) target="$$current"; break;; \
+			2) printf 'Enter new hostname: '; \
+			   read target; \
+			   [ -n "$$target" ] && break; \
+			   printf 'Hostname cannot be empty.\n';; \
+			*) printf 'Invalid selection, try again.\n';; \
+		esac; \
 	done; \
-	if $$valid; then \
-		printf '\033[1;34m==> Hostname "%s" matches a configuration\033[0m\n' "$$current"; \
+	if [ -d "hosts/$$target" ]; then \
+		printf '\033[1;34m==> Configuration already exists for "%s"\033[0m\n' "$$target"; \
 	else \
-		printf '\033[1;33m==> Hostname "%s" does not match any configuration.\033[0m\n' "$$current"; \
-		printf 'Available hosts:\n'; \
+		printf '\nSelect a host configuration to clone:\n'; \
 		i=1; \
 		for h in $(HOSTS); do \
 			printf '  %d) %s\n' "$$i" "$$h"; \
@@ -39,24 +55,32 @@ hostname:
 		done; \
 		printf '\n'; \
 		while true; do \
-			printf 'Select a hostname [1-%d]: ' $$(echo $(HOSTS) | wc -w | tr -d ' '); \
-			read choice; \
-			i=1; \
+			printf 'Template [1-%d]: ' $$(echo $(HOSTS) | wc -w | tr -d ' '); \
+			read tchoice; \
+			i=1; template=""; \
 			for h in $(HOSTS); do \
-				if [ "$$i" = "$$choice" ]; then \
-					selected="$$h"; \
+				if [ "$$i" = "$$tchoice" ]; then \
+					template="$$h"; \
 					break; \
 				fi; \
 				i=$$((i + 1)); \
 			done; \
-			[ -n "$${selected:-}" ] && break; \
+			[ -n "$$template" ] && break; \
 			printf 'Invalid selection, try again.\n'; \
 		done; \
-		printf '\033[1;34m==> Renaming machine to "%s"...\033[0m\n' "$$selected"; \
-		sudo scutil --set ComputerName "$$selected"; \
-		sudo scutil --set HostName "$$selected"; \
-		sudo scutil --set LocalHostName "$$selected"; \
-		printf '\033[1;34m==> Hostname set to "%s"\033[0m\n' "$$selected"; \
+		printf '\033[1;34m==> Cloning hosts/%s to hosts/%s...\033[0m\n' "$$template" "$$target"; \
+		cp -r "hosts/$$template" "hosts/$$target"; \
+		sed -i '' "s/networking.hostName = \"$$template\"/networking.hostName = \"$$target\"/" "hosts/$$target/default.nix"; \
+		sed -i '' "s/darwinConfigurations = {/darwinConfigurations = { $$target = mkDarwinSystem { hostname = \"$$target\"; extraHomeModules = [ .\/hosts\/$$target\/home.nix ]; };/" flake.nix; \
+		nix fmt flake.nix; \
+		printf '\033[1;34m==> Created configuration for "%s"\033[0m\n' "$$target"; \
+	fi; \
+	if [ "$$target" != "$$current" ]; then \
+		printf '\033[1;34m==> Renaming machine to "%s"...\033[0m\n' "$$target"; \
+		sudo scutil --set ComputerName "$$target"; \
+		sudo scutil --set HostName "$$target"; \
+		sudo scutil --set LocalHostName "$$target"; \
+		printf '\033[1;34m==> Hostname set to "%s"\033[0m\n' "$$target"; \
 	fi
 
 # Install Nix if missing
