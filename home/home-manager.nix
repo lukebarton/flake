@@ -5,12 +5,15 @@
     #    ../configs/zed.nix
     #    ../configs/aerospace.nix
     #    ../configs/nvim.nix
+    ../configs/rclone.nix
     ../configs/starship.nix
   ];
 
   home.username = "luke";
   home.homeDirectory = "/Users/luke";
   home.stateVersion = "25.11";
+
+  programs.zsh.shellAliases.op-zsh = "op run --no-masking -- zsh -ic";
 
   # Misc configs
   home.file.".config/1Password/ssh/agent.toml".source = ../files/1password/agent.toml;

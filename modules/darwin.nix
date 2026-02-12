@@ -116,15 +116,20 @@
       "nikitabobko/tap"
     ];
 
+    brews = [
+      "filen-cli" # nix pkg won't build. For managing filen api keys for use in rclone
+    ];
+
     casks = [
       "1password"
+      "1password-cli"
       "nikitabobko/tap/aerospace"
       "alcove"
       "betterdisplay"
       "claude-code"
       "ghostty"
       "jetbrains-toolbox"
-      "shottr"
+      "shottr" # Sceenshots
       "zed"
       "zen"
     ];

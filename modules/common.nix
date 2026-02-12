@@ -56,4 +56,7 @@ with pkgs; [
   zsh-vi-mode
   zsh-fzf-tab
   zsh-you-should-use
+
+  # Cloud Storage
+  rclone
 ]

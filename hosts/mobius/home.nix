@@ -7,4 +7,9 @@
   ];
 
   home.file.".ssh/config".source = ./ssh-config;
+  home.file.".config/rclone/cloud.filters".text = ''
+    - .DS_Store
+    + /vaults/**
+    - **
+  '';
 }
