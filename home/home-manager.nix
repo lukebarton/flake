@@ -12,9 +12,9 @@
   home.homeDirectory = "/Users/luke";
   home.stateVersion = "25.11";
 
-  # 1Password SSH agent configuration
+  # Misc configs
   home.file.".config/1Password/ssh/agent.toml".source = ../files/1password/agent.toml;
-
+  home.file.".config/aerospace/aerospace.toml".source = ../files/aerospace/aerospace.toml;
 
   # Fonts
   home.packages = with pkgs; [
