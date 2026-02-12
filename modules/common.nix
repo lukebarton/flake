@@ -21,7 +21,7 @@ with pkgs; [
   ripgrep # better grep
   fd # better find
   bat # better cat
-  eza # better ls
+  lsd # better ls
   atuin # better history
   zoxide # better z
 

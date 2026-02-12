@@ -99,6 +99,12 @@
       ugrep = "grep -E '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'";
       mbtq = "make build && make test-unit && make quality";
       vim = "nvim --cmd \"set loadplugins\"";
+
+      # lsd
+      l = "lsd -l";
+      la = "lsd -a";
+      lla = "lsd -la";
+      lt = "lsd --tree";
     };
 
     sessionVariables = {
