@@ -44,4 +44,4 @@ make init      # Set up git hooks
 
 - [nix-darwin](https://github.com/LnL7/nix-darwin)
 - [home-manager](https://nix-community.github.io/home-manager/)
-- [ekarcnevts flake](https://github.com/ekarcnevets/flake)
+- [ekarcnevets flake](https://github.com/ekarcnevets/flake)
