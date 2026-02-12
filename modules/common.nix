@@ -31,6 +31,7 @@ with pkgs; [
   btop # Better system monitor than htop
   biome # Fast formatter for JS/TS/JSON/CSS
   gnumake # GNU Make build tool
+  neovim
 
   # System Python (for system scripts and tools)
   python3

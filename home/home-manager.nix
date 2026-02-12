@@ -5,7 +5,7 @@
     ../configs/ghostty.nix
     #    ../configs/zed.nix
     #    ../configs/aerospace.nix
-    #    ../configs/nvim.nix
+    ../configs/nvim.nix
     ../configs/rclone.nix
     ../configs/starship.nix
   ];
