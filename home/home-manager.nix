@@ -1,6 +1,7 @@
 { pkgs, lib, ... }: {
   imports = [
     ../configs/git.nix
+    ../configs/git-grab.nix
     ../configs/ghostty.nix
     #    ../configs/zed.nix
     #    ../configs/aerospace.nix
