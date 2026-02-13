@@ -86,10 +86,6 @@
 
     # Disable Siri
     CustomUserPreferences = {
-      "com.apple.Siri" = {
-        "UAProfileCheckingStatus" = 0;
-        "siriEnabled" = 0;
-      };
       # Disable screenshot keyboard shortcuts
       "com.apple.symbolichotkeys" = {
         AppleSymbolicHotKeys = {
