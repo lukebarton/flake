@@ -122,6 +122,7 @@
       "1password-cli"
       "nikitabobko/tap/aerospace"
       "alcove"
+      "antinote"
       "betterdisplay"
       "claude-code"
       "ghostty"
