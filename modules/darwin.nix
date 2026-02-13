@@ -125,6 +125,7 @@
       "antinote"
       "betterdisplay"
       "claude-code"
+      "clop" # image+video compressor when files land on desktop
       "ghostty"
       "jetbrains-toolbox"
       "nordvpn"
