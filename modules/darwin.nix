@@ -132,6 +132,7 @@
       "nordvpn"
       "raycast"
       "shottr" # Sceenshots
+      "whatsapp"
       "zed"
       "zen"
     ];
