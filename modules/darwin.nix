@@ -127,6 +127,7 @@
       "claude-code"
       "ghostty"
       "jetbrains-toolbox"
+      "nordvpn"
       "raycast"
       "shottr" # Sceenshots
       "zed"
