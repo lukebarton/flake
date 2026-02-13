@@ -136,6 +136,7 @@
     ];
 
     masApps = {
+      "Dropover" = 1355679052;
     };
 
     onActivation = {
