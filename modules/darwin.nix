@@ -126,6 +126,7 @@
       "betterdisplay"
       "claude-code"
       "clop" # image+video compressor when files land on desktop
+      "discord"
       "ghostty"
       "jetbrains-toolbox"
       "nordvpn"
