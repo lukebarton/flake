@@ -1,10 +1,10 @@
 { pkgs, lib, ... }: {
   imports = [
+    ../configs/aerospace.nix
     ../configs/git.nix
     ../configs/git-grab.nix
     ../configs/ghostty.nix
     #    ../configs/zed.nix
-    #    ../configs/aerospace.nix
     ../configs/nvim.nix
     ../configs/rclone.nix
     ../configs/starship.nix
@@ -18,7 +18,6 @@
 
   # Misc configs
   home.file.".config/1Password/ssh/agent.toml".source = ../files/1password/agent.toml;
-  home.file.".config/aerospace/aerospace.toml".source = ../files/aerospace/aerospace.toml;
 
   # Fonts
   home.packages = with pkgs; [

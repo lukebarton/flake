@@ -6,6 +6,8 @@ after-startup-command = [
     'workspace 1',
 ]
 
+exec-on-workspace-change = ['/bin/bash', '-c', '~/.config/aerospace/sticky-windows.sh $AEROSPACE_FOCUSED_WORKSPACE']
+
 accordion-padding = 60
 
 [exec]
@@ -75,6 +77,11 @@ esc = 'mode main'
 alt-w = ['layout tiling floating', 'mode main']
 f = ['layout h_accordion tiles', 'mode main']
 o = ['layout tiles horizontal vertical', 'mode main']
+
+
+[[on-window-detected]]
+check-further-callbacks = true
+run = 'exec-and-forget ~/.config/aerospace/sticky-windows.sh'
 
 # IDEs/Editors
 [[on-window-detected]]
