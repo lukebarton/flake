@@ -97,6 +97,7 @@
           "29" = { enabled = false; }; # Copy picture of screen to clipboard (⌃⇧⌘3)
           "30" = { enabled = false; }; # Save picture of selected area as a file (⇧⌘4)
           "31" = { enabled = false; }; # Copy picture of selected area to clipboard (⌃⇧⌘4)
+          "64" = { enabled = false; }; # Spotlight search (⌘Space)
         };
       };
     };
@@ -129,6 +130,7 @@
       "claude-code"
       "ghostty"
       "jetbrains-toolbox"
+      "raycast"
       "shottr" # Sceenshots
       "zed"
       "zen"
