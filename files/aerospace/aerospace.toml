@@ -1,5 +1,6 @@
 # Reference: https://github.com/i3/i3/blob/next/etc/config
 #
+config-version = 2
 
 after-startup-command = [
     'exec-and-forget borders active_color=0xff404344 width=8.0',
@@ -8,7 +9,18 @@ after-startup-command = [
 
 exec-on-workspace-change = ['/bin/bash', '-c', '~/.config/aerospace/sticky-windows.sh $AEROSPACE_FOCUSED_WORKSPACE']
 
+enable-normalization-flatten-containers = false
+
 accordion-padding = 60
+
+persistent-workspaces = [
+    "meeting", # icon: person.crop.square.badge.video
+    "comms", # icon: ellipsis.message.fill
+    "notes", # icon: text.book.closed
+    "primary", # icon: smallcircle.filled.circle.fill
+    "secondary",  # icon: smallcircle.circle.fill
+    "tertiary" # icon: circle.dotted.circle.fill
+]
 
 [exec]
 inherit-env-vars = true
@@ -16,12 +28,15 @@ inherit-env-vars = true
 PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
 [gaps]
-inner.horizontal = 10
-inner.vertical = 10
-outer.left = 10
-outer.bottom = 10
-outer.top = 10
-outer.right = 10
+inner.horizontal = 5
+inner.vertical = 5
+outer.left = 5
+outer.bottom = 5
+outer.top = 5
+outer.right = 5
+
+[workspace-to-monitor-force-assignment]
+meeting = ['Elgato']
 
 [mode.main.binding]
 
@@ -35,94 +50,123 @@ alt-shift-j = 'move down --boundaries all-monitors-outer-frame'
 alt-shift-k = 'move up --boundaries all-monitors-outer-frame'
 alt-shift-l = 'move right --boundaries all-monitors-outer-frame'
 
-
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
-alt-0 = 'workspace 10'
-
-alt-shift-1 = 'move-node-to-workspace 1'
-alt-shift-2 = 'move-node-to-workspace 2'
-alt-shift-3 = 'move-node-to-workspace 3'
-alt-shift-4 = 'move-node-to-workspace 4'
-alt-shift-5 = 'move-node-to-workspace 5'
-alt-shift-6 = 'move-node-to-workspace 6'
-alt-shift-7 = 'move-node-to-workspace 7'
-alt-shift-8 = 'move-node-to-workspace 8'
-alt-shift-9 = 'move-node-to-workspace 9'
-alt-shift-0 = 'move-node-to-workspace 10'
-
 alt-shift-c = 'reload-config'
+alt-f = 'fullscreen'
 
 alt-w = 'mode window'
 
-alt-r = 'mode resize'
-[mode.resize.binding]
-h = 'resize width -50'
-j = 'resize height +50'
-k = 'resize height -50'
-l = 'resize width +50'
-r = ['reload-config', 'mode main']
-enter = 'mode main'
+[mode.window.binding]
+r = 'mode rearrange'
+g = 'mode go'
+m = 'mode move'
 esc = 'mode main'
 
-[mode.window.binding]
-# Arrangement
-alt-w = ['layout tiling floating', 'mode main']
-f = ['layout h_accordion tiles', 'mode main']
-o = ['layout tiles horizontal vertical', 'mode main']
+[mode.rearrange.binding] # LeaderKey: w > r "rearrange", activate mode only
+h = 'focus left'
+j = 'focus down'
+k = 'focus up'
+l = 'focus right'
 
+shift-h = 'move left'
+shift-j = 'move down'
+shift-k = 'move up'
+shift-l = 'move right'
+
+alt-h = 'resize width -50'
+alt-j = 'resize height +50'
+alt-k = 'resize height -50'
+alt-l = 'resize width +50'
+t = 'layout tiles horizontal vertical'
+a = 'layout accordion horizontal vertical'
+c = 'layout tiling floating'
+
+n = 'flatten-workspace-tree'
+
+esc = 'mode main'
+
+[mode.go.binding] # LeaderKey: w > g "go"
+m = ['workspace meeting', 'mode main']
+c = ['workspace comms', 'mode main']
+n = ['workspace notes', 'mode main']
+p = ['workspace primary', 'mode main']
+s = ['workspace secondary', 'mode main']
+t = ['workspace tertiary', 'mode main']
+esc = 'mode main'
+
+[mode.move.binding] # LeaderKey: w > m "move", icon: square.and.arrow.up.on.square
+w = 'mode workspace'
+d = 'mode display'
+esc = 'mode main'
+
+[mode.workspace.binding] # LeaderKey: w > m > w "workspace", icon: square.and.arrow.down.on.square.fill
+m = ['move-node-to-workspace meeting --focus-follows-window', 'mode main']
+c = ['move-node-to-workspace comms --focus-follows-window', 'mode main']
+n = ['move-node-to-workspace notes --focus-follows-window', 'mode main']
+p = ['move-node-to-workspace primary --focus-follows-window', 'mode main']
+s = ['move-node-to-workspace secondary --focus-follows-window', 'mode main']
+t = ['move-node-to-workspace tertiary --focus-follows-window', 'mode main']
+esc = 'mode main'
+
+[mode.display.binding] # LeaderKey: w > m > d "display", icon: desktopcomputer.and.macbook
+e = ['move-workspace-to-monitor M32U', 'mode main'] # icon: tv
+l = ['move-workspace-to-monitor built-in', 'mode main'] # icon: laptop
+p = ['move-workspace-to-monitor Elgato', 'mode main'] # icon: tv.circle
+esc = 'mode main'
 
 [[on-window-detected]]
 check-further-callbacks = true
 run = 'exec-and-forget ~/.config/aerospace/sticky-windows.sh'
 
+[[on-window-detected]]
+if.window-title-regex-substring = "^Meet"
+run = ['move-node-to-workspace meeting', 'layout tiling']
+
+[[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = ['move-node-to-workspace meeting', 'layout tiling']
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
+run = ['move-node-to-workspace meeting', 'layout tiling']
+
 # IDEs/Editors
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
-run = 'move-node-to-workspace 1'
+run = ['layout tiling', 'move-node-to-workspace primary']
 
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.intellij-EAP'
-run = 'move-node-to-workspace 1'
+run = ['layout tiling', 'move-node-to-workspace primary']
 
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.intellij'
-run = 'move-node-to-workspace 1'
-
-# Terminals
-[[on-window-detected]]
-if.app-id = 'com.apple.Terminal'
-run = 'move-node-to-workspace 2'
+run = ['layout tiling', 'move-node-to-workspace primary']
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = ['layout floating', 'move-node-to-workspace 2'] # ghostty has some tab weirdness with aerospace
+run = ['layout floating', 'move-node-to-workspace primary'] # ghostty has some tab weirdness with aerospace
 
-# Web Browser
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-run = 'move-node-to-workspace 3'
+run = ['layout tiling', 'move-node-to-workspace primary']
+
+# Comms Apps
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = ['layout tiling', 'move-node-to-workspace comms']
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = ['layout tiling', 'move-node-to-workspace comms']
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = ['layout tiling', 'move-node-to-workspace comms']
 
 # Notes Apps
 [[on-window-detected]]
-if.app-name-regex-substring = 'Obsidian' # TODO: find the window id
-run = 'move-node-to-workspace 7'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Heptabase' # TODO: find the window id
-run = 'move-node-to-workspace 7'
-
-# Meeting Apps
-[[on-window-detected]]
-if.app-id = 'us.zoom.xos'
-run = 'move-node-to-workspace 9'
+if.app-id = 'md.obsidian'
+run = ['layout tiling', 'move-node-to-workspace notes']
 
 # Tile these wherever they're called up
 [[on-window-detected]]
@@ -139,6 +183,17 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'com.1password.1password'
 run = ['layout tiling']
+
+# Leader Key
+[[on-window-detected]]
+if.app-id = 'com.brnbw.Leader-Key'
+if.window-title-regex-substring = "^General$"
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.brnbw.Leader-Key'
+if.window-title-regex-substring = "" # catch edit popups
+run = 'layout floating'
 
 # Things I wish I could just make aerospace ignore entirely
 [[on-window-detected]]
@@ -164,4 +219,4 @@ run = 'layout floating'
 # Fallback
 [[on-window-detected]]
 # run = ['move-node-to-monitor ^Built-in --focus-follows-window', 'layout tiling'] # this is more annoying than useful, as it turns out
-run = ['move-node-to-workspace 10', 'layout floating']
+run = ['layout floating']
