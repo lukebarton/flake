@@ -1,0 +1,191 @@
+{
+  "actions" : [
+    {
+      "actions" : [
+        {
+          "key" : "e",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
+        },
+        {
+          "key" : "p",
+          "type" : "url",
+          "value" : "raycast://confetti"
+        },
+        {
+          "key" : "c",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/system/open-camera"
+        }
+      ],
+      "key" : "r",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "iconPath" : "square.resize.up",
+          "key" : "r",
+          "label" : "rearrange",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace mode rearrange"
+        },
+        {
+          "actions" : [
+            {
+              "actions" : [
+                {
+                  "iconPath" : "person.crop.square.badge.video",
+                  "key" : "m",
+                  "label" : "meeting",
+                  "type" : "command",
+                  "value" : "/opt/homebrew/bin/aerospace move-node-to-workspace meeting --focus-follows-window"
+                },
+                {
+                  "iconPath" : "ellipsis.message.fill",
+                  "key" : "c",
+                  "label" : "comms",
+                  "type" : "command",
+                  "value" : "/opt/homebrew/bin/aerospace move-node-to-workspace comms --focus-follows-window"
+                },
+                {
+                  "iconPath" : "text.book.closed",
+                  "key" : "n",
+                  "label" : "notes",
+                  "type" : "command",
+                  "value" : "/opt/homebrew/bin/aerospace move-node-to-workspace notes --focus-follows-window"
+                },
+                {
+                  "iconPath" : "smallcircle.filled.circle.fill",
+                  "key" : "p",
+                  "label" : "primary",
+                  "type" : "command",
+                  "value" : "/opt/homebrew/bin/aerospace move-node-to-workspace primary --focus-follows-window"
+                },
+                {
+                  "iconPath" : "smallcircle.circle.fill",
+                  "key" : "s",
+                  "label" : "secondary",
+                  "type" : "command",
+                  "value" : "/opt/homebrew/bin/aerospace move-node-to-workspace secondary --focus-follows-window"
+                },
+                {
+                  "iconPath" : "circle.dotted.circle.fill",
+                  "key" : "t",
+                  "label" : "tertiary",
+                  "type" : "command",
+                  "value" : "/opt/homebrew/bin/aerospace move-node-to-workspace tertiary --focus-follows-window"
+                }
+              ],
+              "iconPath" : "square.and.arrow.down.on.square.fill",
+              "key" : "w",
+              "label" : "workspace",
+              "type" : "group"
+            },
+            {
+              "actions" : [
+                {
+                  "iconPath" : "tv",
+                  "key" : "e",
+                  "label" : "external",
+                  "type" : "command",
+                  "value" : "/opt/homebrew/bin/aerospace move-workspace-to-monitor M32U"
+                },
+                {
+                  "iconPath" : "laptopcomputer",
+                  "key" : "l",
+                  "label" : "laptop",
+                  "type" : "command",
+                  "value" : "/opt/homebrew/bin/aerospace move-workspace-to-monitor built-in"
+                },
+                {
+                  "iconPath" : "tv.circle",
+                  "key" : "p",
+                  "label" : "prompter",
+                  "type" : "command",
+                  "value" : "/opt/homebrew/bin/aerospace move-workspace-to-monitor Elgato"
+                }
+              ],
+              "iconPath" : "desktopcomputer.and.macbook",
+              "key" : "d",
+              "label" : "display",
+              "type" : "group"
+            }
+          ],
+          "iconPath" : "square.and.arrow.up.on.square",
+          "key" : "m",
+          "label" : "move",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "iconPath" : "person.crop.square.badge.video",
+              "key" : "m",
+              "label" : "meeting",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/aerospace workspace meeting"
+            },
+            {
+              "iconPath" : "ellipsis.message.fill",
+              "key" : "c",
+              "label" : "comms",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/aerospace workspace comms"
+            },
+            {
+              "iconPath" : "text.book.closed",
+              "key" : "n",
+              "label" : "notes",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/aerospace workspace notes"
+            },
+            {
+              "iconPath" : "smallcircle.filled.circle.fill",
+              "key" : "p",
+              "label" : "primary",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/aerospace workspace primary"
+            },
+            {
+              "iconPath" : "smallcircle.circle.fill",
+              "key" : "s",
+              "label" : "secondary",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/aerospace workspace secondary"
+            },
+            {
+              "iconPath" : "circle.dotted.circle.fill",
+              "key" : "t",
+              "label" : "tertiary",
+              "type" : "command",
+              "value" : "/opt/homebrew/bin/aerospace workspace tertiary"
+            }
+          ],
+          "iconPath" : "arrow.turn.up.right",
+          "key" : "g",
+          "label" : "go",
+          "type" : "group"
+        },
+        {
+          "iconPath" : "inset.filled.center.rectangle",
+          "key" : "c",
+          "label" : "center",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/window-management/center"
+        },
+        {
+          "iconPath" : "macwindow.on.rectangle",
+          "key" : "space",
+          "label" : "tiling | floating",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace layout tiling floating"
+        }
+      ],
+      "key" : "w",
+      "label" : "window",
+      "type" : "group"
+    }
+  ],
+  "type" : "group"
+}

@@ -138,6 +138,7 @@
       "ghostty"
       "jetbrains-toolbox"
       "karabiner-elements" # input manipulation
+      "leader-key" # leader key w/ which-key, but for mac
       "nordvpn"
       "raycast"
       "shottr" # Sceenshots
