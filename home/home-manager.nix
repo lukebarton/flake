@@ -5,6 +5,7 @@
     ../configs/git.nix
     ../configs/git-grab.nix
     ../configs/ghostty.nix
+    ../configs/karabiner.nix
     #    ../configs/zed.nix
     ../configs/nvim.nix
     ../configs/rclone.nix

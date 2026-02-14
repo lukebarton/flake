@@ -137,6 +137,7 @@
       "discord"
       "ghostty"
       "jetbrains-toolbox"
+      "karabiner-elements" # input manipulation
       "nordvpn"
       "raycast"
       "shottr" # Sceenshots

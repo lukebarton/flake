@@ -60,4 +60,7 @@ with pkgs; [
 
   # Cloud Storage
   rclone
+
+  # Misc
+  goku
 ]
