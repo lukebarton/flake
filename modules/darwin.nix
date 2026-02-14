@@ -86,6 +86,12 @@
 
     # Disable Siri
     CustomUserPreferences = {
+      # Mac DisplayLink drivers for some reason trigger screen sharing which disables touchid
+      # My Elgato Teleprompter is a DisplayLink device
+      # Allow Touch ID during screen sharing (ignore ARD session detection)
+      "com.apple.security.authorization" = {
+        ignoreArd = true;
+      };
       # Disable screenshot keyboard shortcuts
       "com.apple.symbolichotkeys" = {
         AppleSymbolicHotKeys = {
