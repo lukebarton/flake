@@ -136,6 +136,7 @@
       "clop" # image+video compressor when files land on desktop
       "discord"
       "ghostty"
+      "grammarly-desktop"
       "jetbrains-toolbox"
       "karabiner-elements" # input manipulation
       "leader-key" # leader key w/ which-key, but for mac
