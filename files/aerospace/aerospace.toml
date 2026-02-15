@@ -183,6 +183,11 @@ run = ['layout tiling']
 if.window-title-regex-substring = '^1Password$'
 run = ['layout floating']
 
+[[on-window-detected]]
+if.app-id = 'com.1password.1password'
+if.window-title-regex-substring = 'Quick Access'
+run = ['layout floating']
+
 # 1Password other windows
 [[on-window-detected]]
 if.app-id = 'com.1password.1password'
