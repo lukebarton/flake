@@ -61,6 +61,9 @@ with pkgs; [
   # Cloud Storage
   rclone
 
+  # TUI tools
+  gum # Charm TUI components
+
   # Misc
   goku
 ]
