@@ -173,6 +173,10 @@ run = ['layout tiling', 'move-node-to-workspace notes']
 if.app-id = 'com.apple.finder'
 run = ['layout tiling']
 
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = ['layout tiling']
+
 # 1Password
 # SSH Prompt (Must be ahead of com.1password.1password)
 [[on-window-detected]]
