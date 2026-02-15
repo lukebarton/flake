@@ -140,6 +140,7 @@
       "karabiner-elements" # input manipulation
       "leader-key" # leader key w/ which-key, but for mac
       "nordvpn"
+      "obsidian"
       "raycast"
       "shottr" # Sceenshots
       "kamillobinski/thock/thock" # keyboard sounds, ikr?
