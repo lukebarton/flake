@@ -17,4 +17,10 @@ cursor-style-blink = true
 cursor-invert-fg-bg = true
 cursor-opacity = .8
 
-keybind = cmd+k=text:\x01K
+keybind = cmd+f=toggle_split_zoom
+keybind = cmd+h=goto_split:left
+keybind = cmd+j=goto_split:bottom
+keybind = cmd+k=goto_split:top
+keybind = cmd+l=goto_split:right
+keybind = cmd+shift+j=new_split:down
+keybind = cmd+shift+l=new_split:right
