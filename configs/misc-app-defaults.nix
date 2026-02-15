@@ -48,6 +48,24 @@
     useGoogleMaps = true;
   };
 
+  # NordVPN default settings
+  targets.darwin.defaults."com.nordvpn.macos" = {
+    #appIcon = 1;
+    #connectOnDemand = false;
+    #customDNS = [];
+    #enableCustomDNS = false;
+    helpUsImprove = false;
+    #isAnalyticsConsentAllowed = true;
+    #isEngagementMeasurementConsentAllowed = true;
+    #meshnetEnabled = false;
+    #noNetworkAlertOnMeshnetEnabled = true;
+    startOnBoot = true;
+    #webProtectionCategoriesSelections = {
+    #  adAndTrackingBlocker = true;
+    #  advancedProtection = true;
+    #};
+  };
+
   # Shottr default settings
   targets.darwin.defaults."cc.ffitch.shottr" = {
     #afterGrabCopy = false;
