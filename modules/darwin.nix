@@ -150,6 +150,7 @@
 
     masApps = {
       "Dropover" = 1355679052;
+      "Dato" = 1470584107; # Calendar toolbar
     };
 
     onActivation = {
