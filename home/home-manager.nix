@@ -8,6 +8,7 @@
     ../configs/karabiner.nix
     ../configs/leaderkey.nix
     #    ../configs/zed.nix
+    ../configs/misc-app-defaults.nix
     ../configs/nvim.nix
     ../configs/rclone.nix
     ../configs/starship.nix
