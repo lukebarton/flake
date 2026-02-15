@@ -106,4 +106,18 @@
     #windowSolidColor = "#404448";
   };
 
+  # Wooshy default settings
+  targets.darwin.defaults."mo.com.sleeplessmind.Wooshy" = {
+    fuzzyMatchingFlavor = "wooshyExtended";
+    hazeOverWindowStyle = "fadeOutExceptDockMenuBarAndFrontmostApp";
+    hideMenuBarIcon = true;
+    ignoreSafariTabsAndURLs = false;
+    inputPosition = "aboveWindow";
+    inputPreset = "custom";
+    inputTextSize = 36;
+    KeyboardShortcuts_toggleWith = "{\"carbonKeyCode\":79,\"carbonModifiers\":0}";
+    targetsBorderStyle = "macOS26";
+    targetsColor = "gsFlamboyantFuchsia";
+  };
+
 }
