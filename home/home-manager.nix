@@ -3,8 +3,7 @@
     ../configs/1password.nix
     ../configs/aerospace.nix
     ../configs/git.nix
-    ../configs/git-grab.nix
-    ../configs/defaults-to-nix.nix
+    ../configs/custom-scripts.nix
     ../configs/ghostty.nix
     ../configs/karabiner.nix
     ../configs/leaderkey.nix
