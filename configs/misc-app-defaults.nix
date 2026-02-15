@@ -48,4 +48,44 @@
     useGoogleMaps = true;
   };
 
+  # Shottr default settings
+  targets.darwin.defaults."cc.ffitch.shottr" = {
+    #afterGrabCopy = false;
+    #afterGrabSave = false;
+    #afterGrabShow = true;
+    allowTelemetry = false;
+    #altZoomDirection = false;
+    #alwaysOnTop = false;
+    #areaCaptureMode = "editor";
+    #areaCustomGrabber = false;
+    #captureCursor = "auto";
+    #colorFormat = "HEX";
+    #copyOnEsc = true;
+    #customBackdropColor = "#6080A0";
+    #customGradFrom = "#221448";
+    #customGradTo = "#919BD2";
+    #defaultFolder = "";
+    #downscaleOnSave = false;
+    #expandableCanvas = true;
+    #notificationType = "custom";
+    #ocrRemoveBreaks = false;
+    #preferLargeWindow = true;
+    #primaryOCRLang = "en-US";
+    #realPixels = false;
+    #saveFormat = "Auto";
+    #saveOnEsc = false;
+    #scrollingManualEnabled = false;
+    #scrollingMax = 20000;
+    #scrollingReverseAutoscroll = false;
+    #scrollingSpeed = 2;
+    #snappingMode = 2;
+    #thumbnailClosing = "manual";
+    #uploadMode = "s3";
+    KeyboardShortcuts_area = "{\"carbonModifiers\":768,\"carbonKeyCode\":21}";
+    KeyboardShortcuts_fullscreen = "{\"carbonModifiers\":768,\"carbonKeyCode\":20}";
+    KeyboardShortcuts_ocr = "{\"carbonKeyCode\":31,\"carbonModifiers\":6400}";
+    windowShadow = "wallpaper";
+    #windowSolidColor = "#404448";
+  };
+
 }
