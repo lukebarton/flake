@@ -41,7 +41,7 @@
 
     # Trackpad settings
     trackpad = {
-      Clicking = true; # Tap to click
+      Clicking = false; # Tap to click disabled
       TrackpadRightClick = true; # Two-finger secondary click
       FirstClickThreshold = 0; # Light click pressure
       SecondClickThreshold = 0; # Light force click pressure
@@ -56,11 +56,11 @@
       TrackpadMomentumScroll = true;
       TrackpadPinch = true; # Pinch to zoom
       TrackpadRotate = true; # Two-finger rotate
-      TrackpadFourFingerHorizSwipeGesture = 2; # Swipe between full-screen apps
-      TrackpadFourFingerVertSwipeGesture = 2; # Mission Control / App Exposé
-      TrackpadFourFingerPinchGesture = 2; # Launchpad / Show Desktop
-      TrackpadThreeFingerHorizSwipeGesture = 2; # Swipe between pages
-      TrackpadThreeFingerVertSwipeGesture = 2; # Mission Control
+      TrackpadFourFingerHorizSwipeGesture = 0; # Swipe between full-screen apps
+      TrackpadFourFingerVertSwipeGesture = 0; # Disabled (Mission Control / App Exposé)
+      TrackpadFourFingerPinchGesture = 0; # Launchpad / Show Desktop
+      TrackpadThreeFingerHorizSwipeGesture = 0; # Disabled (Swipe between pages)
+      TrackpadThreeFingerVertSwipeGesture = 0; # Disabled (Mission Control)
       TrackpadTwoFingerFromRightEdgeSwipeGesture = 0; # Disabled
     };
 
