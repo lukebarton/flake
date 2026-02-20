@@ -140,6 +140,7 @@
       "jetbrains-toolbox"
       "karabiner-elements" # input manipulation
       "leader-key" # leader key w/ which-key, but for mac
+      "linearmouse"
       "nordvpn"
       "obsidian"
       "raycast"

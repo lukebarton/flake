@@ -7,6 +7,7 @@
     ../configs/ghostty.nix
     ../configs/karabiner.nix
     ../configs/leaderkey.nix
+    ../configs/linearmouse.nix
     #    ../configs/zed.nix
     ../configs/misc-app-defaults.nix
     ../configs/nvim.nix
