@@ -1,8 +1,10 @@
-{:main [{:des "left_command + right_command to f16"
-         :rules [[{:sim [:left_command :right_command]} :f16]]}
-        {:des "left_alt + right_alt to f17"
-         :rules [[{:sim [:left_alt :right_alt]} :f17]]}
-        {:des "f + j to f18"
-         :rules [[{:sim [:f :j ]} :f18]]}
-        {:des "d + k to f19"
-         :rules [[{:sim [:d :k ]} :f19]]}]}
+{:main [{:des "g + h to f16"
+         :rules [[{:sim [:g :h]} :f16]]}
+        {:des "f + j to f17"
+         :rules [[{:sim [:f :j]} :f17]]}
+        {:des "d + k to f18"
+         :rules [[{:sim [:d :k]} :f18]]}
+        {:des "s + l to f19"
+         :rules [[{:sim [:s :l]} :f19]]}
+        {:des "a + ; to f20"
+         :rules [[{:sim [:a :semicolon]} :f20]]}]}
