@@ -1,4 +1,5 @@
-{:main [{:des "g + h to f16"
+{:sim-threshold 25
+ :main [{:des "g + h to f16"
          :rules [[{:sim [:g :h]} :f16]]}
         {:des "f + j to f17"
          :rules [[{:sim [:f :j]} :f17]]}
