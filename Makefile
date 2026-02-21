@@ -1,4 +1,4 @@
-.PHONY: bootstrap init switch build update clean check fmt help nix homebrew hostname
+.PHONY: bootstrap init switch build update clean check fmt help nix homebrew hostname kanata-dev
 
 HOSTS := $(sort $(notdir $(wildcard hosts/*)))
 
@@ -14,6 +14,7 @@ help:
 	@echo "  make check     - Check flake for errors"
 	@echo "  make fmt       - Format nix files"
 	@echo "  make init      - Set up git hooks"
+	@echo "  make kanata-dev - Run kanata with repo config for development"
 	@echo "  make help      - Show this help message"
 
 # Full bootstrap: install deps, set hostname, build, activate, init
@@ -124,6 +125,13 @@ check:
 # Format nix files
 fmt:
 	fd -e nix -X nix fmt --
+
+# Run kanata with repo config for development
+kanata-dev:
+	@sudo launchctl unload /Library/LaunchDaemons/org.nixos.kanata.plist 2>/dev/null; \
+	printf '\033[1;34m==> Kanata service stopped. Running with repo config (Ctrl+C to stop)...\033[0m\n'; \
+	trap 'printf "\n\033[1;34m==> Reloading kanata service...\033[0m\n"; sudo launchctl load /Library/LaunchDaemons/org.nixos.kanata.plist' EXIT; \
+	sudo kanata -c files/kanata/kanata.kbd
 
 # Set up git hooks
 init:

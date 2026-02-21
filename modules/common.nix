@@ -65,5 +65,5 @@ with pkgs; [
   gum # Charm TUI components
 
   # Misc
-  goku
+  kanata
 ]

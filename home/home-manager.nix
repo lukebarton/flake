@@ -5,7 +5,6 @@
     ../configs/git.nix
     ../configs/custom-scripts.nix
     ../configs/ghostty.nix
-    ../configs/karabiner.nix
     ../configs/leaderkey.nix
     ../configs/linearmouse.nix
     #    ../configs/zed.nix

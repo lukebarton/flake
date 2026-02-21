@@ -109,7 +109,7 @@
   # Remap Caps Lock to Control
   system.keyboard = {
     enableKeyMapping = true;
-    remapCapsLockToControl = true;
+    remapCapsLockToControl = false;
   };
 
   # Homebrew configuration
@@ -165,4 +165,40 @@
   };
 
   system.stateVersion = 5;
+
+  launchd.daemons = {
+      kanata = {
+        command = "${pkgs.kanata}/bin/kanata -c ${inputs.self + "/files/kanata/kanata.kbd"}";
+        serviceConfig = {
+          RunAtLoad = true;
+          KeepAlive = true;
+          StandardErrorPath = "/Library/Logs/Kanata/kanata.err.log";
+          StandardOutPath = "/Library/Logs/Kanata/kanata.out.log";
+        };
+      };
+      karabiner-vhiddaemon = {
+        serviceConfig = {
+          ProgramArguments = [
+            "/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/Applications/Karabiner-VirtualHIDDevice-Daemon.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Daemon"
+          ];
+          RunAtLoad = true;
+          KeepAlive = true;
+        };
+      };
+      karabiner-vhidmanager = {
+        serviceConfig = {
+          ProgramArguments = [
+            "/Applications/.Karabiner-VirtualHIDDevice-Manager.app/Contents/MacOS/Karabiner-VirtualHIDDevice-Manager"
+            "activate"
+          ];
+          RunAtLoad = true;
+        };
+      };
+    };
+
+    # Log rotation for kanata
+    environment.etc."newsyslog.d/kanata.conf".text = ''
+      /Library/Logs/Kanata/kanata.err.log 644 3 100 * J
+      /Library/Logs/Kanata/kanata.out.log 644 3 100 * J
+    '';
 }

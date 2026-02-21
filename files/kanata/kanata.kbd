@@ -1,0 +1,48 @@
+;; Kanata configuration for caps to esc+arrows
+
+(defcfg
+  process-unmapped-keys yes
+  concurrent-tap-hold yes
+)
+
+(defchordsv2
+  (g h)             f16          25  first-release ()
+  (f j)             f17          25  first-release ()
+  (d k)             f18          25  first-release ()
+  (s l)             f19          25  first-release ()
+  (a ;)             f20          25  first-release ()
+  (f9 f10 f11 f12)  @toggle-game 200 first-release ()
+)
+
+(defsrc
+  esc   f9   f10  f11  f12
+  caps  a    s    d    f    g    h    j    k    l    ;
+)
+
+(defvar
+  tap-time 200
+  hold-time 150
+)
+
+(deflayer base
+  esc   f9   f10  f11  f12
+  @caps a    s    d    f    g    h    j    k    l    ;
+)
+
+(deflayer unmodified
+  esc   f9   f10  f11  f12
+  caps  a    s    d    f    g    h    j    k    l    ;
+)
+
+(deflayer arrows
+  lrld  f9   f10  f11  f12
+  _     a    s    d    f    g    left down up   rght ;
+)
+
+(defalias
+  caps (tap-hold-press $tap-time $hold-time esc (layer-while-held arrows))
+  toggle-game (switch
+    ((layer unmodified)) (layer-switch base) break
+    () (layer-switch unmodified) break
+  )
+)

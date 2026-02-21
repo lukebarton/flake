@@ -32,6 +32,10 @@ make init      # Set up git hooks
 
 **Language toolchains:** Use per-project nix dev shells instead of global installs.
 
+## Manual Steps
+
+**Kanata Input Monitoring:** After the first build (or after a kanata package update), grant Input Monitoring access in **System Settings > Privacy & Security > Input Monitoring** for the kanata binary at `/etc/profiles/per-user/luke/bin/kanata`. The Nix store path it symlinks to changes on package updates, so you may need to re-approve it.
+
 ## Troubleshooting
 
 **Git signing fails:** Ensure 1Password is running with SSH agent enabled
