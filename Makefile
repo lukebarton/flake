@@ -102,13 +102,19 @@ homebrew:
 		/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
 	fi
 
-# Build and activate the configuration (re-evaluate hostname at recipe time)
+# Build and activate the configuration (auto-detect platform)
 switch:
-	sudo darwin-rebuild switch --flake .#$$(hostname | cut -d. -f1)
+	@case "$$(uname)" in \
+		Darwin) sudo darwin-rebuild switch --flake .#$$(hostname | cut -d. -f1) ;; \
+		Linux)  sudo nixos-rebuild switch --flake .#$$(hostname | cut -d. -f1) ;; \
+	esac
 
-# Build without activating
+# Build without activating (auto-detect platform)
 build:
-	darwin-rebuild build --flake .#$$(hostname | cut -d. -f1)
+	@case "$$(uname)" in \
+		Darwin) darwin-rebuild build --flake .#$$(hostname | cut -d. -f1) ;; \
+		Linux)  nixos-rebuild build --flake .#$$(hostname | cut -d. -f1) ;; \
+	esac
 
 # Update flake inputs
 update:

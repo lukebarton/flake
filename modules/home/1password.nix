@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  home.file.".config/1Password/ssh/agent.toml".source = ../files/1password/agent.toml;
+  home.file.".config/1Password/ssh/agent.toml".source = ../../files/1password/agent.toml;
 
   home.packages = [
     (pkgs.writeShellApplication {

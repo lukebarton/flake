@@ -1,42 +1,4 @@
 { pkgs, lib, ... }: {
-  imports = [
-    ../configs/1password.nix
-    ../configs/aerospace.nix
-    ../configs/git.nix
-    ../configs/custom-scripts.nix
-    ../configs/ghostty.nix
-    ../configs/leaderkey.nix
-    ../configs/linearmouse.nix
-    #    ../configs/zed.nix
-    ../configs/misc-app-defaults.nix
-    ../configs/nvim.nix
-    ../configs/rclone.nix
-    ../configs/starship.nix
-  ];
-
-  home.username = "luke";
-  home.homeDirectory = "/Users/luke";
-  home.stateVersion = "25.11";
-
-  # Fonts
-  home.packages = with pkgs; [
-    nerd-fonts.blex-mono
-    nerd-fonts.go-mono
-  ];
-
-  programs.atuin = {
-    enable = true;
-    enableZshIntegration = true;
-    settings = {
-      enter_accept = false;
-    };
-  };
-
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -194,11 +156,5 @@
         _evalcache starship init zsh
       ''
     ];
-  };
-
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = false; # Using evalcache for faster init
-    nix-direnv.enable = true;
   };
 }

@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 
   # rclone config file
-  home.file.".config/rclone/rclone.conf".source = ../files/rclone/rclone.conf;
+  home.file.".config/rclone/rclone.conf".source = ../../files/rclone/rclone.conf;
 
   # rclone secrets
   programs.zsh.sessionVariables = {

@@ -1,5 +1,5 @@
 {
-  description = "Luke's nix-darwin configuration";
+  description = "Luke's nix configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -11,35 +11,52 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
     let
-      darwinSystem = "aarch64-darwin";
-
-      mkDarwinSystem = { hostname, extraHomeModules ? [ ] }:
-        nix-darwin.lib.darwinSystem {
-          system = darwinSystem;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/${hostname}
-            ./modules/darwin.nix
-            home-manager.darwinModules.home-manager
+      lib = import ./lib { inherit inputs; };
+    in
+    lib.merge [
+      # Darwin configurations
+      {
+        darwinConfigurations.mobius = lib.mkSystem {
+          hostname = "mobius";
+          system = "aarch64-darwin";
+          users = [
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.luke = {
-                imports = [ ./home/darwin.nix ] ++ extraHomeModules;
-              };
+              username = "luke";
+              darwinModule = ./users/luke/darwin.nix;
+              homeModule = ./users/luke/home.nix;
+              extraHomeModules = [ ./hosts/mobius/home.nix ];
             }
           ];
         };
-    in
-    {
-      # Formatter for 'nix fmt'
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
+      }
 
-      darwinConfigurations = {
-        mobius = mkDarwinSystem {
-          hostname = "mobius";
-          extraHomeModules = [ ./hosts/mobius/home.nix ];
-        };
-      };
-    };
+      # NixOS configurations (scaffold)
+      # {
+      #   nixosConfigurations.example = lib.mkSystem {
+      #     hostname = "example";
+      #     system = "x86_64-linux";
+      #     users = [
+      #       {
+      #         username = "luke";
+      #         nixosModule = ./users/luke/nixos.nix;
+      #         homeModule = ./users/luke/home.nix;
+      #       }
+      #     ];
+      #   };
+      # }
+
+      # Exported modules
+      {
+        darwinModules = lib.exportModules ./modules/darwin;
+        nixosModules = lib.exportModules ./modules/nixos;
+        homeManagerModules = lib.exportModules ./modules/home;
+      }
+
+      # Formatter
+      {
+        formatter = lib.forAllSystems (system:
+          nixpkgs.legacyPackages.${system}.nixpkgs-fmt
+        );
+      }
+    ];
 }
