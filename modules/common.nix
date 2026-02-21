@@ -36,11 +36,6 @@ with pkgs; [
   # System Python (for system scripts and tools)
   python3
 
-  # Container tools
-  colima # Container runtime for macOS
-  docker # Docker CLI
-  docker-compose # Docker Compose CLI
-
   # Kubernetes tools
   kubectl # Kubernetes CLI
   kubernetes-helm # Helm package manager

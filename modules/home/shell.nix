@@ -81,11 +81,6 @@
 
       # Kubernetes
       KUBECTL_EXTERNAL_DIFF = "dyff between --omit-header --set-exit-code";
-
-      # Docker/Testcontainers (for colima)
-      DOCKER_HOST = "unix://$HOME/.config/colima/default/docker.sock";
-      TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE = "/var/run/docker.sock";
-      TESTCONTAINERS_RYUK_DISABLED = "true";
     };
 
     initContent = lib.mkMerge [
@@ -123,9 +118,6 @@
       '')
 
       ''
-        # Colima/Testcontainers dynamic host
-        export TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j 2>/dev/null | jq -r '.address' 2>/dev/null || echo "")
-
         # SSH keys
         ssh-add -A >/dev/null 2>&1
 
