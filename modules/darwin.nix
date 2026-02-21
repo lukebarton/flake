@@ -134,6 +134,7 @@
       "betterdisplay"
       "claude-code"
       "clop" # image+video compressor when files land on desktop
+      "displaylink" # for Elgato Teleprompter
       "discord"
       "ghostty"
       "grammarly-desktop"
