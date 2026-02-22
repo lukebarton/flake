@@ -24,7 +24,6 @@
               username = "luke";
               darwinModule = ./users/luke/darwin.nix;
               homeModule = ./users/luke/home.nix;
-              extraHomeModules = [ ./hosts/mobius/home.nix ];
             }
           ];
         };

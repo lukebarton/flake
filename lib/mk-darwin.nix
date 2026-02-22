@@ -3,12 +3,16 @@
 { hostname, system, users, extraModules }:
 
 let
+  hostUserConfig = username:
+    let path = ../. + "/hosts/${hostname}/users/${username}.nix";
+    in if builtins.pathExists path then [ path ] else [ ];
+
   userConfigs = map
     (user: [
       user.darwinModule
       {
         home-manager.users.${user.username} = {
-          imports = [ user.homeModule ] ++ (user.extraHomeModules or [ ]);
+          imports = [ user.homeModule ] ++ (hostUserConfig user.username);
         };
       }
     ])
@@ -18,7 +22,7 @@ inputs.nix-darwin.lib.darwinSystem {
   inherit system;
   specialArgs = { inherit inputs; };
   modules = [
-    (../. + "/hosts/${hostname}")
+    (../. + "/hosts/${hostname}/darwin.nix")
     ../modules/darwin
     inputs.home-manager.darwinModules.home-manager
     {

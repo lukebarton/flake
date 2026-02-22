@@ -1,5 +1,8 @@
-{ pkgs, ... }: {
-
+{ pkgs, config, ... }:
+let
+  homeDir = config.home.homeDirectory;
+in
+{
   programs.gh = {
     enable = true;
     extensions = [
@@ -11,6 +14,14 @@
 
   programs.git = {
     enable = true;
+
+    # This is serving as a placeholder for a future time where an employer's gitconfig might be required
+    includes = [
+      {
+        condition = "gitdir:${homeDir}/src/github.com/lukebarton/";
+        path = "${homeDir}/src/github.com/lukebarton/.gitconfig";
+      }
+    ];
 
     settings = {
       user = {

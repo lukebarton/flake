@@ -3,6 +3,12 @@
   # rclone config file
   home.file.".config/rclone/rclone.conf".source = ../../files/rclone/rclone.conf;
 
+  home.file.".config/rclone/cloud.filters".text = ''
+    - .DS_Store
+    + /vaults/**
+    - **
+  '';
+
   # rclone secrets
   programs.zsh.sessionVariables = {
     RCLONE_CONFIG_DRIME_ACCESS_TOKEN = "op://dev/rclone/drime-token";
