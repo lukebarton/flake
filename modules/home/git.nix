@@ -1,6 +1,15 @@
 { pkgs, config, ... }:
 let
   homeDir = config.home.homeDirectory;
+  ghSrcDir = "${homeDir}/src/github.com";
+
+  setupBareRepo = ''
+    git -C "$DIR" config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" \
+    && git -C "$DIR" fetch origin \
+    && BRANCH=$(git -C "$DIR" symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's|refs/remotes/origin/||') \
+    && [ -n "$BRANCH" ] \
+    && git -C "$DIR" worktree add "$DIR/$BRANCH" "$BRANCH"
+  '';
 in
 {
   programs.gh = {
@@ -8,6 +17,15 @@ in
     extensions = [
       # TODO: gh-ssh-allowed-signers
     ];
+    settings.aliases = {
+      wclone = ''!REPO="$1" DIR="${ghSrcDir}/$1" \
+        && gh repo clone "$REPO" "$DIR" -- --bare \
+        && ${setupBareRepo}'';
+      wcreate = ''!REPO="$1" DIR="${ghSrcDir}/$1" \
+        && gh repo create "$REPO" --private \
+        && gh repo clone "$REPO" "$DIR" -- --bare \
+        && ${setupBareRepo}'';
+    };
   };
 
   home.file.".gitignore".source = ../../files/git/.gitignore;
@@ -40,6 +58,7 @@ in
         edit = "!git ls-files --modified --other --exclude-standard | sort -u | fzf -0 --multi --preview 'git diff --color {}' | xargs -r $EDITOR -p";
         fixup = "!git log --oneline --no-decorate --no-merges | fzf -0 --preview 'git show --color=always --format=oneline {1}' | awk '{print $1}' | xargs -r git commit --fixup";
         resetm = "!git diff --name-only --cached | fzf -0 -m --preview 'git diff --color=always {-1}' | xargs -r git reset";
+        wta = ''!f() { ROOT="$(git rev-parse --git-common-dir)"; git worktree add "$ROOT/$1" "$1" 2>/dev/null || git worktree add -b "$1" "$ROOT/$1"; }; f'';
       };
 
       gpg = {
