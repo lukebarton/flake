@@ -12,6 +12,7 @@
     ../../modules/home/linearmouse.nix
     ../../modules/home/misc-app-defaults.nix
     ../../modules/home/nvim.nix
+    ../../modules/home/pnpm.nix
     ../../modules/home/rclone.nix
     ../../modules/home/starship.nix
   ];
