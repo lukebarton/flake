@@ -135,12 +135,22 @@ if.app-id = 'com.microsoft.VSCode'
 run = ['layout tiling', 'move-node-to-workspace primary']
 
 [[on-window-detected]]
+if.during-aerospace-startup = true
 if.app-id = 'com.jetbrains.intellij-EAP'
 run = ['layout tiling', 'move-node-to-workspace primary']
 
 [[on-window-detected]]
+if.during-aerospace-startup = true
 if.app-id = 'com.jetbrains.intellij'
 run = ['layout tiling', 'move-node-to-workspace primary']
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.intellij'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.jetbrains.intellij-EAP'
+run = ['layout floating']
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
