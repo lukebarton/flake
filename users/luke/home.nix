@@ -15,6 +15,7 @@
     ../../modules/home/pnpm.nix
     ../../modules/home/rclone.nix
     ../../modules/home/starship.nix
+    ../../modules/home/typescript.nix
   ];
 
   home.username = "luke";
