@@ -147,6 +147,13 @@
         _evalcache direnv hook zsh
         _evalcache starship init zsh
       ''
+
+      (lib.mkAfter ''
+        # Restore builtin cd in Claude Code (the cd='z' alias breaks completions)
+        if [[ "$CLAUDECODE" == "1" || "$CLAUDECODE" == "true" ]]; then
+          unalias cd 2>/dev/null
+        fi
+      '')
     ];
   };
 }
