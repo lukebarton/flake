@@ -6,17 +6,18 @@
 )
 
 (defchordsv2
-  (g h)             f16          25  first-release ()
-  (f j)             f17          25  first-release ()
-  (d k)             f18          25  first-release ()
-  (s l)             f19          25  first-release ()
-  (a ;)             f20          25  first-release ()
+  (g h)             (multi lctrl lsft lalt lmet h) 25  first-release ()
+  (f j)             (multi lctrl lsft lalt lmet j) 25  first-release ()
+  (d k)             (multi lctrl lsft lalt lmet k) 25  first-release ()
+  (s l)             (multi lctrl lsft lalt lmet l) 25  first-release ()
+  (a ;)             (multi lctrl lsft lalt lmet ;) 25  first-release ()
   (f9 f10 f11 f12)  @toggle-game 200 first-release ()
 )
 
 (defsrc
   esc   f9   f10  f11  f12
   caps  a    s    d    f    g    h    j    k    l    ;
+  lctrl lalt lmet
 )
 
 (defvar
@@ -25,22 +26,28 @@
 )
 
 (deflayer base
-  esc   f9   f10  f11  f12
-  @caps a    s    d    f    g    h    j    k    l    ;
+  esc    f9   f10  f11  f12
+  @caps  a    s    d    f    g    h    j    k    l    ;
+  @dctrl @dalt @dcmd
 )
 
 (deflayer unmodified
   esc   f9   f10  f11  f12
   caps  a    s    d    f    g    h    j    k    l    ;
+  lctrl lalt lmet
 )
 
 (deflayer arrows
   lrld  f9   f10  f11  f12
   _     a    s    d    f    g    left down up   rght ;
+  _     _    _
 )
 
 (defalias
   caps (tap-hold-press $tap-time $hold-time esc (layer-while-held arrows))
+  dctrl (tap-dance 200 (lctrl (tap-hold-press $tap-time $hold-time lctrl f16)))
+  dalt  (tap-dance 200 (lalt  (tap-hold-press $tap-time $hold-time lalt  f17)))
+  dcmd  (tap-dance 200 (lmet  (tap-hold-press $tap-time $hold-time lmet  f18)))
   toggle-game (switch
     ((layer unmodified)) (layer-switch base) break
     () (layer-switch unmodified) break

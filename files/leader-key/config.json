@@ -185,6 +185,13 @@
       "label" : "party",
       "type" : "url",
       "value" : "raycast://confetti"
+    },
+    {
+      "actions" : [
+
+      ],
+      "key" : "a",
+      "type" : "group"
     }
   ],
   "type" : "group"
