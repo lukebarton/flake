@@ -3,61 +3,61 @@
     {
       "actions" : [
         {
+          "iconPath" : "person.crop.square.badge.video",
+          "key" : "m",
+          "label" : "meeting",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace workspace meeting"
+        },
+        {
+          "iconPath" : "ellipsis.message.fill",
+          "key" : "c",
+          "label" : "comms",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace workspace comms"
+        },
+        {
+          "iconPath" : "text.book.closed",
+          "key" : "n",
+          "label" : "notes",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace workspace notes"
+        },
+        {
+          "iconPath" : "smallcircle.filled.circle.fill",
+          "key" : "p",
+          "label" : "primary",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace workspace primary"
+        },
+        {
+          "iconPath" : "smallcircle.circle.fill",
+          "key" : "s",
+          "label" : "secondary",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace workspace secondary"
+        },
+        {
+          "iconPath" : "circle.dotted.circle.fill",
+          "key" : "t",
+          "label" : "tertiary",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace workspace tertiary"
+        }
+      ],
+      "iconPath" : "arrow.turn.up.right",
+      "key" : "g",
+      "label" : "go",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
           "iconPath" : "square.resize.up",
           "key" : "r",
           "label" : "rearrange",
           "type" : "command",
           "value" : "/opt/homebrew/bin/aerospace mode rearrange"
-        },
-        {
-          "actions" : [
-            {
-              "iconPath" : "person.crop.square.badge.video",
-              "key" : "m",
-              "label" : "meeting",
-              "type" : "command",
-              "value" : "/opt/homebrew/bin/aerospace workspace meeting"
-            },
-            {
-              "iconPath" : "ellipsis.message.fill",
-              "key" : "c",
-              "label" : "comms",
-              "type" : "command",
-              "value" : "/opt/homebrew/bin/aerospace workspace comms"
-            },
-            {
-              "iconPath" : "text.book.closed",
-              "key" : "n",
-              "label" : "notes",
-              "type" : "command",
-              "value" : "/opt/homebrew/bin/aerospace workspace notes"
-            },
-            {
-              "iconPath" : "smallcircle.filled.circle.fill",
-              "key" : "p",
-              "label" : "primary",
-              "type" : "command",
-              "value" : "/opt/homebrew/bin/aerospace workspace primary"
-            },
-            {
-              "iconPath" : "smallcircle.circle.fill",
-              "key" : "s",
-              "label" : "secondary",
-              "type" : "command",
-              "value" : "/opt/homebrew/bin/aerospace workspace secondary"
-            },
-            {
-              "iconPath" : "circle.dotted.circle.fill",
-              "key" : "t",
-              "label" : "tertiary",
-              "type" : "command",
-              "value" : "/opt/homebrew/bin/aerospace workspace tertiary"
-            }
-          ],
-          "iconPath" : "arrow.turn.up.right",
-          "key" : "g",
-          "label" : "go",
-          "type" : "group"
         },
         {
           "actions" : [
