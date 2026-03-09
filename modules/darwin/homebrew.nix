@@ -22,12 +22,14 @@
       "clop" # image+video compressor when files land on desktop
       "displaylink" # for Elgato Teleprompter
       "discord"
+      "elgato-stream-deck"
       "ghostty"
       "grammarly-desktop"
       "jetbrains-toolbox"
       "karabiner-elements" # input manipulation
       "leader-key" # leader key w/ which-key, but for mac
       "linearmouse"
+      "macwhisper"
       "nordvpn"
       "obsidian"
       "raycast"
@@ -35,6 +37,7 @@
       "kamillobinski/thock/thock" # keyboard sounds, ikr?
       "whatsapp"
       "wooshy" # easymotion/acejump for mac
+      "visual-studio-code"
       "zed"
       "zen"
     ];
