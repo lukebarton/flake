@@ -61,4 +61,5 @@ with pkgs; [
 
   # Misc
   kanata
+  yt-dlp
 ]
