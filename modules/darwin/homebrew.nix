@@ -24,6 +24,7 @@
       "discord"
       "elgato-stream-deck"
       "ghostty"
+      "google-chrome"
       "grammarly-desktop"
       "jetbrains-toolbox"
       "karabiner-elements" # input manipulation
