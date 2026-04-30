@@ -15,9 +15,9 @@
 )
 
 (defsrc
-  esc   f9   f10  f11  f12
+  esc   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   caps  a    s    d    f    g    h    j    k    l    ;
-  lctrl lalt lmet
+  fn    lctrl lalt lmet
 )
 
 (defvar
@@ -26,24 +26,32 @@
 )
 
 (deflayer base
-  esc    f9   f10  f11  f12
+  esc    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   @caps  a    s    d    f    g    h    j    k    l    ;
-  @dctrl @dalt @dcmd
+  @fnl   @dctrl @dalt @dcmd
 )
 
 (deflayer unmodified
-  esc   f9   f10  f11  f12
+  esc   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   caps  a    s    d    f    g    h    j    k    l    ;
-  lctrl lalt lmet
+  fn    lctrl lalt lmet
 )
 
 (deflayer arrows
-  lrld  f9   f10  f11  f12
+  lrld  _   _   _   _   _   _   _   _   _   _  _  _
   _     a    s    d    f    g    left down up   rght ;
-  _     _    _
+  _     _    _    _
+)
+
+;; Some keys are missing: `Mission Control`, `Launchpad`, `dictation`, `Do Not Disturb`
+(deflayer fn
+  _     brdn brup _    _    _    _    prev pp   next mute vold volu
+  _     _    _    _    _    _    _    _    _    _    _
+  _     _    _    _
 )
 
 (defalias
+  fnl (tap-hold 200 200 fn (layer-toggle fn))
   caps (tap-hold-press $tap-time $hold-time esc (layer-while-held arrows))
   dctrl (tap-dance 200 (lctrl (tap-hold-press $tap-time $hold-time lctrl f16)))
   dalt  (tap-dance 200 (lalt  (tap-hold-press $tap-time $hold-time lalt  f17)))
@@ -53,3 +61,4 @@
     () (layer-switch unmodified) break
   )
 )
+
