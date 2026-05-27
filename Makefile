@@ -105,7 +105,7 @@ homebrew:
 # Build and activate the configuration (auto-detect platform)
 switch:
 	@case "$$(uname)" in \
-		Darwin) sudo darwin-rebuild switch --flake .#$$(hostname | cut -d. -f1) ;; \
+		Darwin) sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#$$(hostname | cut -d. -f1) ;; \
 		Linux)  sudo nixos-rebuild switch --flake .#$$(hostname | cut -d. -f1) ;; \
 	esac
 
