@@ -33,6 +33,7 @@
       "macwhisper"
       "obsidian"
       "raycast"
+      "rodecaster"
       "shottr" # Sceenshots
       "kamillobinski/thock/thock" # keyboard sounds, ikr?
       "whatsapp"
