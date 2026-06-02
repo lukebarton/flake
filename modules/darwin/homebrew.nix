@@ -31,7 +31,6 @@
       "leader-key" # leader key w/ which-key, but for mac
       "linearmouse"
       "macwhisper"
-      "nordvpn"
       "obsidian"
       "raycast"
       "shottr" # Sceenshots
