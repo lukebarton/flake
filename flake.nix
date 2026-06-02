@@ -27,6 +27,17 @@
             }
           ];
         };
+        darwinConfigurations.blackswan = lib.mkSystem {
+          hostname = "blackswan";
+          system = "aarch64-darwin";
+          users = [
+            {
+              username = "luke.barton";
+              darwinModule = ./users/luke.barton/darwin.nix;
+              homeModule = ./users/luke.barton/home.nix;
+            }
+          ];
+        };
       }
 
       # NixOS configurations (scaffold)
