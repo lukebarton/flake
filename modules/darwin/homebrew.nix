@@ -53,6 +53,9 @@
     onActivation = {
       autoUpdate = true;
       cleanup = "zap";
+      # Homebrew 5.1.15 requires explicit confirmation for `brew bundle install --cleanup`.
+      # Remove once nix-darwin#1787 lands.
+      extraFlags = [ "--force-cleanup" ];
     };
   };
 }
