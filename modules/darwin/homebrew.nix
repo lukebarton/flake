@@ -19,7 +19,7 @@
       "alcove"
       "antinote"
       "betterdisplay"
-      "claude-code"
+      "claude-code@latest"
       "clop" # image+video compressor when files land on desktop
       "displaylink" # for Elgato Teleprompter
       "discord"
