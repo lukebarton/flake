@@ -33,6 +33,7 @@
       "linearmouse"
       "macwhisper"
       "obsidian"
+      "presentify"
       "raycast"
       "rodecaster"
       "shottr" # Sceenshots
