@@ -9,6 +9,7 @@
 
     brews = [
       "filen-cli" # nix pkg won't build. For managing filen api keys for use in rclone
+      "mas" # required by brew bundle for masApps; declared so cleanup doesn't churn it
     ];
 
     casks = [
