@@ -71,6 +71,13 @@
       lt = "lsd --tree";
     };
 
+    # Contents of ~/.zprofile (preserved from the file home-manager would
+    # otherwise clobber — originally added by JetBrains Toolbox App).
+    profileExtra = ''
+      # Added by Toolbox App
+      export PATH="$PATH:/Users/luke/Library/Application Support/JetBrains/Toolbox/scripts"
+    '';
+
     sessionVariables = {
       # Editor
       EDITOR = "nvim";

@@ -56,6 +56,9 @@
       # Homebrew 5.1.15 requires explicit confirmation for `brew bundle install --cleanup`.
       # Remove once nix-darwin#1787 lands.
       extraFlags = [ "--force-cleanup" ];
+      # Homebrew 6.0 requires taps to be trusted before loading casks from them.
+      # This disables that check so brew bundle can manage third-party taps declaratively.
+      extraEnv.HOMEBREW_NO_REQUIRE_TAP_TRUST = "1";
     };
   };
 }
