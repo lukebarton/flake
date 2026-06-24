@@ -1,0 +1,7 @@
+# Colima default instance template.
+# Applied when a new colima instance is created (e.g. `colima start`).
+cpu: 4
+memory: 8
+
+# Disable inotify for VM mounts.
+mountInotify: false
