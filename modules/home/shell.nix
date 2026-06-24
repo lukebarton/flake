@@ -1,4 +1,7 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, config, ... }:
+let
+  homeDir = config.home.homeDirectory;
+in {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -75,7 +78,7 @@
     # otherwise clobber — originally added by JetBrains Toolbox App).
     profileExtra = ''
       # Added by Toolbox App
-      export PATH="$PATH:/Users/luke/Library/Application Support/JetBrains/Toolbox/scripts"
+      export PATH="$PATH:${homeDir}/Library/Application Support/JetBrains/Toolbox/scripts"
     '';
 
     sessionVariables = {
@@ -104,8 +107,8 @@
 
       (lib.mkOrder 550 ''
         # Completions
-        if [[ ":$FPATH:" != *":/Users/luke/.zsh/completions:"* ]]; then
-          export FPATH="/Users/luke/.zsh/completions:$FPATH"
+        if [[ ":$FPATH:" != *":${homeDir}/.zsh/completions:"* ]]; then
+          export FPATH="${homeDir}/.zsh/completions:$FPATH"
         fi
 
         # Only rebuild completions once per 24 hours for performance
