@@ -4,6 +4,7 @@
     enableZshIntegration = true;
     settings = {
       enter_accept = false;
+      filter_mode = "directory";
     };
   };
 
