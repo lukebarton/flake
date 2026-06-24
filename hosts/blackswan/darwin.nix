@@ -3,6 +3,11 @@
 
   homebrew.brews = [
     "mise"
+    "postgresql@18"
+  ];
+
+  homebrew.casks = [
+    "docker-desktop"
   ];
 
   homebrew.masApps = {
