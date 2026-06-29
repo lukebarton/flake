@@ -3,7 +3,10 @@
 
   homebrew.brews = [
     "mise"
-    "postgresql@18"
+    {
+      name = "postgresql@18";
+      link = true;
+    }
   ];
 
   homebrew.casks = [
