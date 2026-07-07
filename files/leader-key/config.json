@@ -116,7 +116,7 @@
               "key" : "e",
               "label" : "external",
               "type" : "command",
-              "value" : "/opt/homebrew/bin/aerospace move-workspace-to-monitor M32U"
+              "value" : "/opt/homebrew/bin/aerospace move-workspace-to-monitor M32U DELL"
             },
             {
               "iconPath" : "laptopcomputer",

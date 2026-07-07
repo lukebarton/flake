@@ -108,7 +108,7 @@ t = ['move-node-to-workspace tertiary --focus-follows-window', 'mode main']
 esc = 'mode main'
 
 [mode.display.binding] # LeaderKey: w > m > d "display", icon: desktopcomputer.and.macbook
-e = ['move-workspace-to-monitor M32U', 'mode main'] # icon: tv
+e = ['move-workspace-to-monitor M32U DELL', 'mode main'] # icon: tv
 l = ['move-workspace-to-monitor built-in', 'mode main'] # icon: laptop
 p = ['move-workspace-to-monitor Elgato', 'mode main'] # icon: tv.circle
 esc = 'mode main'
