@@ -7,6 +7,7 @@
     ../../modules/home/git.nix
     ../../modules/home/custom-scripts.nix
     ../../modules/home/ghostty.nix
+    ../../modules/home/ideavim.nix
     ../../modules/home/leaderkey.nix
     ../../modules/home/linearmouse.nix
     ../../modules/home/misc-app-defaults.nix
