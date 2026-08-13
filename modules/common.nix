@@ -17,6 +17,9 @@ with pkgs; [
   yq-go
   dyff # YAML diff tool
 
+  # Databases
+  duckdb # In-process analytical database
+
   # Modern CLI replacements
   ripgrep # better grep
   fd # better find
