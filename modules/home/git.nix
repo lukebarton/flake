@@ -9,15 +9,32 @@ in
     extensions = [
       # TODO: gh-ssh-allowed-signers
     ];
-    settings.aliases = {
-      wclone = ''!REPO="$1" DIR="${ghSrcDir}/$1" \
-        && mkdir -p "$DIR" \
-        && echo "gitdir: ./.git-repo" > "$DIR/.git" \
-        && gh repo clone "$REPO" "$DIR/.git-repo" -- --bare \
-        && git -C "$DIR" config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" \
-        && git -C "$DIR" fetch origin'';
-      quick-create = "!gh repo create \"$1\" --private --add-readme";
-    };
+  };
+
+  programs.zsh = {
+    shellAliases.quick-create = "gh repo create --private --add-readme";
+
+    initContent = ''
+      # Worktree clone: bare clone + optional branch worktree, then cd
+      wclone() {
+        local repo="$1" branch="$2"
+        local dir="${ghSrcDir}/$repo"
+        mkdir -p "$dir" \
+          && echo "gitdir: ./.git-repo" > "$dir/.git" \
+          && gh repo clone "$repo" "$dir/.git-repo" -- --bare \
+          && git -C "$dir" config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" \
+          && git -C "$dir" fetch origin \
+          || return
+        if [ -n "$branch" ]; then
+          git -C "$dir" worktree add "$dir/$branch" "$branch" \
+            || git -C "$dir" worktree add -b "$branch" "$dir/$branch" \
+            || return
+          cd "$dir/$branch"
+        else
+          cd "$dir"
+        fi
+      }
+    '';
   };
 
   home.file.".gitignore".source = ../../files/git/.gitignore;
