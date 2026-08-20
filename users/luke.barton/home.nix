@@ -5,6 +5,7 @@
     ../../modules/home/1password.nix
     ../../modules/home/aerospace.nix
     ../../modules/home/git.nix
+    ../../modules/home/claude.nix
     ../../modules/home/custom-scripts.nix
     ../../modules/home/ghostty.nix
     ../../modules/home/ideavim.nix
