@@ -2,7 +2,6 @@
   networking.hostName = "blackswan";
 
   homebrew.brews = [
-    "mise"
     {
       name = "postgresql@18";
       link = true;
