@@ -34,6 +34,38 @@ in
           cd "$dir"
         fi
       }
+
+      # Directory that holds the repository and its worktrees
+      _gwt_root() {
+        local common
+        common=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null) || return 1
+        print -r -- ''${common:h}
+      }
+
+      # cd to a worktree of the current repository; tab-completes worktree names
+      gwt() {
+        local root dir
+        root=$(_gwt_root) || {
+          print -u2 "gwt: not inside a git repository"
+          return 1
+        }
+        dir=''${1:-$root}
+        [ -d "$dir" ] || dir="$root/$1"
+        [ -d "$dir" ] || {
+          print -u2 "gwt: no worktree named $1"
+          return 1
+        }
+        cd "$dir"
+      }
+
+      _gwt() {
+        local root
+        root=$(_gwt_root) || return 1
+        local -a worktrees
+        worktrees=(''${(f)"$(git worktree list | grep -v '(bare)$' | awk '{print $1}')"})
+        compadd -- ''${worktrees#$root/}
+      }
+      compdef _gwt gwt
     '';
   };
 
