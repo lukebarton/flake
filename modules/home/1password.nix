@@ -3,6 +3,8 @@
 
   home.file.".config/1Password/env".source = ../../files/1password/env;
 
+  home.sessionVariables.OP_BIOMETRIC_UNLOCK_ENABLED = "true";
+
   home.packages = [
     (pkgs.writeShellApplication {
       name = "op-run";
