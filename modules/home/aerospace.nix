@@ -1,8 +1,7 @@
-{ config, ... }:
-let
-  homeDir = config.home.homeDirectory;
-in {
-  home.file.".config/aerospace/aerospace.toml".source = config.lib.file.mkOutOfStoreSymlink "${homeDir}/src/github.com/lukebarton/flake/files/aerospace/aerospace.toml";
+{ config, ... }: {
+  imports = [ ./flake-path.nix ];
+
+  home.file.".config/aerospace/aerospace.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.flakePath}/files/aerospace/aerospace.toml";
 
   targets.darwin.defaults."bobko.aerospace" = {
     displayStyle = "squares";

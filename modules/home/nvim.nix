@@ -1,7 +1,6 @@
-{ config, ... }:
-let
-  homeDir = config.home.homeDirectory;
-in {
+{ config, ... }: {
+  imports = [ ./flake-path.nix ];
+
   home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink
-    "${homeDir}/src/github.com/lukebarton/flake/files/nvim";
+    "${config.flakePath}/files/nvim";
 }
