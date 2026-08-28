@@ -49,7 +49,6 @@ with pkgs; [
 
   # AWS tools
   awscli2 # AWS CLI
-  aws-sam-cli # AWS SAM CLI
 
   # Zsh plugins
   zsh-vi-mode
