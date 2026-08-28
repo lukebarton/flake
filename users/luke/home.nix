@@ -2,6 +2,7 @@
   imports = [
     ../../modules/home/shell.nix
     ../../modules/home/colima.nix
+    ../../modules/home/claude.nix
     ../../modules/home/programs.nix
     ../../modules/home/1password.nix
     ../../modules/home/aerospace.nix
