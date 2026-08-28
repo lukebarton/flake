@@ -1,22 +1,32 @@
-This machine is managed by nix-darwin + home-manager from `~/src/github.com/lukebarton/flake`.
+# CLAUDE.md
 
-## Writing
+## Git
 
-Write prose in ASD-STE100 simplified technical English by default: one idea per
-sentence, active voice, literal words, a term used one way throughout. The
-`asd-ste100` skill holds the full rules — load it for a deliberate rewrite pass.
+- Use conventional commit messages, unless the project specifies its own message requirements
+- Only raise PRs if the project or user requires it
+- Use a new worktree+branch when asked to work on an issue from an issue/ticket tracking system from `main`
 
-## Naming
+## Issue tracking
 
-**A feature has a name. Nothing else gets one.** Feature names are deliberate and
-permanent: a user sees them, so they stay. The vocabulary that grows off the back
-of one is not deliberate — a feature named for eating acquires "meals", then a
-"pantry" with "doors" and a "larder". Don't let them accumulate. Say what
-the thing is: a capture in a game, a neighbor reach graph, a cluster of capturable neighbors.
-When you catch yourself extending a feature's metaphor, name the concept instead.
+Before updating or implementing tickets/issues from issue tracking systems:
 
-**Everything internal gets its literal name, everywhere** — identifiers, file
-names, ADR titles, comments, docs, commit messages, and anything you say to me.
-Communicate the intent clearly. A name that needs a story before it means anything is the wrong
-name. Nicknames already in a codebase are a debt, not a precedent: leave new ones
-unwritten, and rename where you touch.
+- Read the comments on the issue
+- Read related issues and their comments
+
+## Relevance
+
+If the user tries to execute unrelated follow on work, suggest they start a new session then ask them if you should continue.
+
+## Communication style
+
+Write plainly and concretely in everything: chat replies, catch-up summaries, commit messages, Linear comments, and docs. Use ordinary sentences and the real names of things. A technical term is fine only when it's clear what it refers to, why the user is reading the sentence, and what response (if any) is needed from them.
+
+Explain anything beyond what an experienced generalist software engineer would know — especially language-specific behaviour and anything from a specialist area such as data structures, algorithms, complexity, or optimisation. Calibrate depth to the understanding the user has demonstrated in the conversation, not to assumptions. Test their understanding only when a decision depends on it.
+
+Use a metaphor only when something is hard to explain plainly, when the user isn't understanding, or when the metaphor is unusually apt. State the plain version first and keep the metaphor brief. Never carry a metaphor into code, names, commit messages, Linear, or docs — with one exception: a narrowly scoped metaphor inside documentation to explain one specific thing that resists plain explanation.
+
+After multi-step autonomous work, assume the user saw none of the intermediate output. Summarise as bullets where each item leads with the cause or symptom, then the fix, then the result and its trade-offs ("it was overcounting on two days in March and October; the cause was X; fixed by Y, which means Z"). Report problems encountered, unexpected fixes, deviations from the plan, repeated attempts at things that should have been easy, and anything that didn't turn out as intended. Omit routine successes. If the summary is long, open with a one-line bold statement of the outcome.
+
+When something is needed from the user, make the ask obvious and skimmable — never buried mid-sentence or wrapped in hedging. There's no need to explicitly state when nothing is needed.
+
+For decisions: a single trivial choice gets a bare question picker. Anything needing context, or several open decisions, gets prose first (context, options, trade-offs, and a recommendation), then a picker per decision, always including an "I don't quite understand…" option so the user can say what's missing.
