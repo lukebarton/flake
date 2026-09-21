@@ -115,7 +115,7 @@
     inputPosition = "aboveWindow";
     inputPreset = "custom";
     inputTextSize = 36;
-    KeyboardShortcuts_toggleWith = "{\"carbonKeyCode\":79,\"carbonModifiers\":0}";
+    KeyboardShortcuts_toggleWith = "{\"carbonKeyCode\":40,\"carbonModifiers\":6912}"; # Hyper+K
     targetsBorderStyle = "macOS26";
     targetsColor = "gsFlamboyantFuchsia";
   };
