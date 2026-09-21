@@ -16,6 +16,7 @@
 
 (defsrc
   esc   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  tab
   caps  a    s    d    f    g    h    j    k    l    ;
   fn    lctrl lalt lmet
 )
@@ -27,18 +28,21 @@
 
 (deflayer base
   esc    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  @tab
   @caps  a    s    d    f    g    h    j    k    l    ;
   @fnl   @dctrl @dalt @dcmd
 )
 
 (deflayer unmodified
   esc   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  tab
   caps  a    s    d    f    g    h    j    k    l    ;
   fn    lctrl lalt lmet
 )
 
 (deflayer arrows
   lrld  _   _   _   _   _   _   _   _   _   _  _  _
+  _
   _     a    s    d    f    g    left down up   rght ;
   _     _    _    _
 )
@@ -46,11 +50,14 @@
 ;; Some keys are missing: `Mission Control`, `Launchpad`, `dictation`, `Do Not Disturb`
 (deflayer fn
   _     brdn brup _    _    _    _    prev pp   next mute vold volu
+  _
   _     _    _    _    _    _    _    _    _    _    _
   _     _    _    _
 )
 
 (defalias
+  ;; cmd+tab -> hyper+tab (fork checks output keys, so a held @dcmd counts)
+  tab (fork tab (multi lctrl lsft lalt lmet tab) (lmet rmet))
   fnl (tap-hold 200 200 fn (layer-toggle fn))
   caps (tap-hold-press $tap-time $hold-time esc (layer-while-held arrows))
   dctrl (tap-dance 200 (lctrl (tap-hold-press $tap-time $hold-time lctrl f16)))
