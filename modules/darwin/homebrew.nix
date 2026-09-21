@@ -24,6 +24,7 @@
       "displaylink" # for Elgato Teleprompter
       "discord"
       "elgato-stream-deck"
+      "gcloud-cli"
       "ghostty"
       "google-chrome"
       "grammarly-desktop"
@@ -33,11 +34,14 @@
       "linearmouse"
       "macwhisper"
       "obsidian"
+      "okta-verify"
+      "omniwm"
       "presentify"
       "raycast"
       "rodecaster"
       "shottr" # Sceenshots
       "kamillobinski/thock/thock" # keyboard sounds, ikr?
+      "twingate" # zero trust network access
       "whatsapp"
       "wooshy" # easymotion/acejump for mac
       "visual-studio-code"
