@@ -7,13 +7,12 @@
 
   # Default instance template: 4 CPUs, 8GB memory, inotify disabled.
   # Used by colima when creating a new instance.
-  home.file.".colima/_templates/default.yaml".source = ../../files/colima/default.yaml;
+  home.file."/.config/colima/_templates/default.yaml".source = ../../files/colima/default.yaml;
 
   programs.ssh = {
     enable = true;
     includes = [
       "~/.config/colima/ssh_config"
-      "~/.colima/ssh_config"
     ];
   };
 
