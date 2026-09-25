@@ -1,19 +1,12 @@
 { pkgs, ... }: {
+  # Cross-platform modules; macOS-only ones live in ./darwin.nix
   imports = [
     ../../modules/home/shell.nix
     ../../modules/home/ssh.nix
-    ../../modules/home/colima.nix
     ../../modules/home/claude.nix
     ../../modules/home/programs.nix
-    ../../modules/home/1password.nix
-    ../../modules/home/aerospace.nix
     ../../modules/home/git.nix
     ../../modules/home/custom-scripts.nix
-    ../../modules/home/ghostty.nix
-    ../../modules/home/ideavim.nix
-    ../../modules/home/leaderkey.nix
-    ../../modules/home/linearmouse.nix
-    ../../modules/home/misc-app-defaults.nix
     ../../modules/home/mise.nix
     ../../modules/home/nvim.nix
     ../../modules/home/pnpm.nix

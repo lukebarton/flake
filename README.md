@@ -1,6 +1,6 @@
-# nix-darwin configuration
+# nix configuration
 
-Declarative macOS configuration using nix-darwin, home-manager, and flakes.
+Declarative macOS configuration using nix-darwin, home-manager, and flakes, plus standalone home-manager for Linux boxes.
 
 ## Bootstrap
 
@@ -11,6 +11,30 @@ curl -fsSL https://raw.githubusercontent.com/lukebarton/flake/main/bootstrap.sh 
 ```
 
 This will install Xcode CLT, clone the repo to `~/src/github.com/lukebarton/flake`, and run `make bootstrap` which handles Nix, Homebrew, hostname selection, building, and activation.
+
+## Linux (Ubuntu) hosts
+
+Non-NixOS Linux boxes are managed with standalone home-manager. Each one has a
+`homeConfigurations."<user>@<host>"` entry in `flake.nix` and a `hosts/<host>/home.nix`.
+
+On a fresh Ubuntu box (e.g. `devbox`):
+
+```bash
+sudo hostnamectl set-hostname devbox
+curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+mkdir -p ~/src/github.com/lukebarton && git clone https://github.com/lukebarton/flake.git ~/src/github.com/lukebarton/flake
+cd ~/src/github.com/lukebarton/flake
+make switch     # runs home-manager switch --flake .#luke@devbox
+```
+
+Then make the Nix-provided zsh the login shell:
+
+```bash
+echo "$HOME/.nix-profile/bin/zsh" | sudo tee -a /etc/shells
+chsh -s "$HOME/.nix-profile/bin/zsh"
+```
+
+SSH in with agent forwarding (see `modules/home/ssh.nix`) so git commit signing uses the 1Password key on the Mac.
 
 ## Usage
 

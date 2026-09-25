@@ -93,9 +93,11 @@ nix:
 		curl -fsSL https://install.determinate.systems/nix | sh -s -- install; \
 	fi
 
-# Install Homebrew if missing
+# Install Homebrew if missing (macOS only)
 homebrew:
-	@if command -v brew >/dev/null 2>&1; then \
+	@if [ "$$(uname)" != "Darwin" ]; then \
+		printf '\033[1;34m==> Skipping Homebrew (not macOS)\033[0m\n'; \
+	elif command -v brew >/dev/null 2>&1; then \
 		printf '\033[1;34m==> Homebrew already installed\033[0m\n'; \
 	else \
 		printf '\033[1;34m==> Installing Homebrew...\033[0m\n'; \
@@ -103,17 +105,26 @@ homebrew:
 	fi
 
 # Build and activate the configuration (auto-detect platform)
+# Linux without /etc/NIXOS (e.g. Ubuntu) uses a standalone home-manager config named user@host.
 switch:
 	@case "$$(uname)" in \
 		Darwin) sudo nix run nix-darwin/master#darwin-rebuild -- switch --flake .#$$(hostname | cut -d. -f1) ;; \
-		Linux)  sudo nixos-rebuild switch --flake .#$$(hostname | cut -d. -f1) ;; \
+		Linux)  if [ -e /etc/NIXOS ]; then \
+		            sudo nixos-rebuild switch --flake .#$$(hostname | cut -d. -f1); \
+		        else \
+		            nix run .#home-manager -- switch --flake .#$$USER@$$(hostname | cut -d. -f1); \
+		        fi ;; \
 	esac
 
 # Build without activating (auto-detect platform)
 build:
 	@case "$$(uname)" in \
 		Darwin) darwin-rebuild build --flake .#$$(hostname | cut -d. -f1) ;; \
-		Linux)  nixos-rebuild build --flake .#$$(hostname | cut -d. -f1) ;; \
+		Linux)  if [ -e /etc/NIXOS ]; then \
+		            nixos-rebuild build --flake .#$$(hostname | cut -d. -f1); \
+		        else \
+		            nix run .#home-manager -- build --flake .#$$USER@$$(hostname | cut -d. -f1); \
+		        fi ;; \
 	esac
 
 # Update flake inputs

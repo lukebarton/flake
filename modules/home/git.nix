@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, pkgs, ... }:
 let
   homeDir = config.home.homeDirectory;
   ghSrcDir = "${homeDir}/src/github.com";
@@ -104,7 +104,8 @@ in
       gpg = {
         format = "ssh";
         ssh = {
-          program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+          # On Linux the default ssh-keygen signs via the (forwarded) SSH agent
+          program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
           allowedSignersFile = "~/.ssh/allowed_signers";
         };
       };

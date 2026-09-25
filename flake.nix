@@ -44,6 +44,16 @@
       #   };
       # }
 
+      # Standalone home-manager configurations (non-NixOS Linux)
+      {
+        homeConfigurations."luke@devbox" = lib.mkHome {
+          hostname = "devbox";
+          system = "x86_64-linux";
+          username = "luke";
+          homeModule = ./users/luke/home.nix;
+        };
+      }
+
       # Exported modules
       {
         darwinModules = lib.exportModules ./modules/darwin;
@@ -51,11 +61,14 @@
         homeManagerModules = lib.exportModules ./modules/home;
       }
 
-      # Formatter
+      # Formatter and the pinned home-manager CLI (used by `make switch` on Linux)
       {
         formatter = lib.forAllSystems (system:
           nixpkgs.legacyPackages.${system}.nixpkgs-fmt
         );
+        packages = lib.forAllSystems (system: {
+          home-manager = home-manager.packages.${system}.home-manager;
+        });
       }
     ];
 }
