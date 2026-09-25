@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ../../modules/home/shell.nix
+    ../../modules/home/ssh.nix
     ../../modules/home/colima.nix
     ../../modules/home/claude.nix
     ../../modules/home/programs.nix
@@ -17,8 +18,10 @@
     ../../modules/home/nvim.nix
     ../../modules/home/pnpm.nix
     ../../modules/home/rclone.nix
+    ../../modules/home/rust.nix
     ../../modules/home/starship.nix
     ../../modules/home/typescript.nix
+    ../../modules/home/uv.nix
   ];
 
   home.username = "luke";

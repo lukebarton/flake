@@ -40,6 +40,7 @@
       "raycast"
       "rodecaster"
       "shottr" # Sceenshots
+      "tailscale-app" # mesh VPN
       "kamillobinski/thock/thock" # keyboard sounds, ikr?
       "twingate" # zero trust network access
       "whatsapp"
