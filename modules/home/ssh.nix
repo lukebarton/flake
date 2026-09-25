@@ -7,5 +7,10 @@
       User = "luke";
       ForwardAgent = "yes";
     };
+    settings."devbox" = {
+      HostName = "devbox.home.innerspace.sh";
+      User = "luke";
+      ForwardAgent = "yes";
+    };
   };
 }
