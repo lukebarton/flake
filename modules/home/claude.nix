@@ -22,4 +22,15 @@
     runtimeInputs = [ pkgs.jq pkgs.git pkgs.coreutils ];
     text = builtins.readFile ../../files/claude/statusline.sh;
   });
+
+  # Point settings.json at the statusline script. The file stays a regular, writable file:
+  # only the statusLine key is merged in, leaving the rest to Claude Code.
+  home.activation.claudeStatusLine = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    settings="$HOME/.claude/settings.json"
+    mkdir -p "$HOME/.claude"
+    [ -s "$settings" ] || echo '{}' > "$settings"
+    ${lib.getExe pkgs.jq} '.statusLine = {type: "command", command: "~/.claude/statusline.sh", padding: 0}' \
+      "$settings" > "$settings.tmp"
+    run mv "$settings.tmp" "$settings"
+  '';
 }
