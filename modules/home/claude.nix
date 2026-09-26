@@ -14,4 +14,12 @@
   # Personal global Claude Code instructions
   home.file.".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink
     "${config.flakePath}/files/claude/CLAUDE.personal.md";
+
+  # Statusline script, referenced by "statusLine.command" in ~/.claude/settings.json
+  # (settings.json itself is left to Claude Code, which rewrites it).
+  home.file.".claude/statusline.sh".source = lib.getExe (pkgs.writeShellApplication {
+    name = "claude-statusline";
+    runtimeInputs = [ pkgs.jq pkgs.git pkgs.coreutils ];
+    text = builtins.readFile ../../files/claude/statusline.sh;
+  });
 }
