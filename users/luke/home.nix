@@ -18,7 +18,7 @@
   ];
 
   home.username = "luke";
-  home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/luke" else "/home/luke";
+  home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/luke" else "/home/luke";
   home.stateVersion = "25.11";
 
   home.packages = import ../../modules/common.nix { inherit pkgs; }

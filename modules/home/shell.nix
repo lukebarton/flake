@@ -97,7 +97,7 @@ in
     initContent = lib.mkMerge [
       (lib.mkBefore ''
         # Homebrew (macOS only)
-        ${lib.optionalString pkgs.stdenv.isDarwin ''eval "$(/opt/homebrew/bin/brew shellenv)"''}
+        ${lib.optionalString pkgs.stdenv.hostPlatform.isDarwin ''eval "$(/opt/homebrew/bin/brew shellenv)"''}
 
         # zsh-vi-mode: Initialize when sourced
         ZVM_INIT_MODE=sourcing

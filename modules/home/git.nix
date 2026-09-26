@@ -105,7 +105,7 @@ in
         format = "ssh";
         ssh = {
           # On Linux the default ssh-keygen signs via the (forwarded) SSH agent
-          program = lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+          program = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
           allowedSignersFile = "~/.ssh/allowed_signers";
         };
       };
